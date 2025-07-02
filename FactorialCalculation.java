@@ -5,12 +5,13 @@ public class FactorialCalculation {
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Enter a non-negative integer to calculate its factorial: ");
-        while (!scanner.hasNextInt() || scanner.nextInt() < 0) {
+        while (!scanner.hasNextInt()) {
             System.out.println("Invalid input. Please enter a non-negative integer.");
             scanner.next();
         }
         int number = scanner.nextInt();
 
+        
         if (number < 0) {
             System.out.println("Factorial is not defined for negative numbers.");
         } else {
@@ -22,5 +23,6 @@ public class FactorialCalculation {
         }
         
         scanner.close();
+
     }
 }
