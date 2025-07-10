@@ -4,58 +4,47 @@ public class SumOfArrayElements {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Enter the amount of numbers you want to add: ");
-        int amountOfNumbers = getValidatedInputForArrayLength(scanner);
-        
-        double[] arrayOfNumbers = createArray(scanner, amountOfNumbers);
-        double sumOfArrayElements = sumOfArrayElements(arrayOfNumbers);
-        System.out.println("Sum: " + sumOfArrayElements);
+        int n = promptInt(scanner, "Enter the number of values (must be > 1): ", 2);
+        double[] values = new double[n];
 
+        for (int i = 0; i < n; i++) {
+            values[i] = promptDouble(scanner, "Enter number " + (i + 1) + ": ");
+        }
+
+        System.out.println("Sum: " + sum(values));
         scanner.close();
     }
 
-    static int getValidatedInputForArrayLength(Scanner scanner) {
+    static int promptInt(Scanner sc, String prompt, int min) {
+        int val;
         while (true) {
-            if (scanner.hasNextInt()) {
-                int amountOfNumbers = scanner.nextInt();
-                if (amountOfNumbers <= 1) {
-                    System.out.print("Invalid input! Please enter a number more than 1: ");
-                } else {
-                    return amountOfNumbers;
-                }
+            System.out.print(prompt);
+            if (sc.hasNextInt()) {
+                val = sc.nextInt();
+                if (val >= min) return val;
             } else {
-                System.out.print("Please enter a numeric value (Integer): ");
-                scanner.next();
+                sc.next(); // discard invalid input
+            }
+            System.out.println("Invalid input. Try again.");
+        }
+    }
+
+    static double promptDouble(Scanner sc, String prompt) {
+        double val;
+        while (true) {
+            System.out.print(prompt);
+            if (sc.hasNextDouble()) {
+                return sc.nextDouble();
+            } else {
+                sc.next(); // discard invalid input
+                System.out.println("Invalid input. Try again.");
             }
         }
     }
 
-    static double getValidatedInputForDouble(Scanner scanner) {
-        while (true) {
-            if (scanner.hasNextDouble()) {
-                double input = scanner.nextDouble();
-                return input;
-            } else {
-                System.out.print("Please enter a numeric value: ");
-                scanner.next();
-            }
-        }
-    }
-
-    static double[] createArray(Scanner scanner, int amountOfNumbers) {
-        double[] arrayOfNumbers = new double[amountOfNumbers];
-        for (int i = 0; i < amountOfNumbers; i++) {
-            System.out.print("Enter number " + (i + 1) + ": ");
-            arrayOfNumbers[i] = getValidatedInputForDouble(scanner);
-        }
-        return arrayOfNumbers;
-    }
-
-    static double sumOfArrayElements(double[] arrayOfNumbers) {
-        double sumOfArrayElements = 0;
-        for (int i = 0; i < arrayOfNumbers.length; i++) {
-            sumOfArrayElements += arrayOfNumbers[i];
-        }
-        return sumOfArrayElements;
+    static double sum(double[] arr) {
+        double total = 0;
+        for (double v : arr) total += v;
+        return total;
     }
 }
