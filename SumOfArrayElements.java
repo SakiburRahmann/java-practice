@@ -21,9 +21,10 @@ public class SumOfArrayElements {
             System.out.print(prompt);
             if (sc.hasNextInt()) {
                 val = sc.nextInt();
-                if (val >= min) return val;
+                if (val >= min)
+                    return val;
             } else {
-                sc.next(); // discard invalid input
+                sc.next(); 
             }
             System.out.println("Invalid input. Try again.");
         }
@@ -36,7 +37,7 @@ public class SumOfArrayElements {
             if (sc.hasNextDouble()) {
                 return sc.nextDouble();
             } else {
-                sc.next(); // discard invalid input
+                sc.next(); 
                 System.out.println("Invalid input. Try again.");
             }
         }
@@ -44,7 +45,8 @@ public class SumOfArrayElements {
 
     static double sum(double[] arr) {
         double total = 0;
-        for (double v : arr) total += v;
+        for (double v : arr)
+            total += v;
         return total;
     }
 }
