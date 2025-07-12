@@ -34,7 +34,7 @@ public class LinearSearchInArray {
                 }
             } else {
                 System.out.println("Invalid input. Please enter a valid integer.");
-                scanner.next(); // Consume invalid token
+                scanner.next(); 
             }
         }
     }
@@ -46,7 +46,7 @@ public class LinearSearchInArray {
                 return scanner.nextDouble();
             } else {
                 System.out.println("Invalid input. Please enter a valid number.");
-                scanner.next(); // Consume invalid token
+                scanner.next(); 
             }
         }
     }
