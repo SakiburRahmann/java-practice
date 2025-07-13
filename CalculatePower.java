@@ -40,12 +40,14 @@ public class CalculatePower {
         }
     }
 
-    private static double calculatePower(double base, int exponent) {
-        double result = 1;
-        int absExp = Math.abs(exponent);
-        for (int i = 0; i < absExp; i++) {
-            result *= base;
+    static double calculatePower(double base, int exponent) {
+        if (exponent == 1) {
+            if (exponent > 0) {
+                return base;
+            } else if (exponent < 0) {
+                return 1 / base;
+            }
         }
-        return exponent < 0 ? 1 / result : result;
+        return base * calculatePower(base, Math.abs(exponent) - 1);
     }
 }
