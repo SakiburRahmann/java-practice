@@ -41,13 +41,15 @@ public class CalculatePower {
     }
 
     static double calculatePower(double base, int exponent) {
-        if (exponent == 1) {
-            if (exponent > 0) {
-                return base;
-            } else if (exponent < 0) {
-                return 1 / base;
-            }
+        if (exponent == 0) {
+            return 1;
         }
-        return base * calculatePower(base, Math.abs(exponent) - 1);
+
+        if (exponent < 0) {
+            return 1 / calculatePower(base, -exponent);
+        }
+
+        return base * calculatePower(base, exponent - 1);
     }
+
 }
