@@ -18,7 +18,7 @@ public class PrintStarPattern {
                 if (val >= min) {
                     return val;
                 } else {
-                    System.out.println("Input must be greater than 0");
+                    System.out.println("Input must be greater than 0.");
                 }
             } else {
                 sc.next();
