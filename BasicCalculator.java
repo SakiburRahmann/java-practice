@@ -6,8 +6,9 @@ public class BasicCalculator {
         Scanner scanner = new Scanner(System.in);
 
         double num1 = getDoubleInput(scanner, "Enter the first number: ");
-        double num2 = getDoubleInput(scanner, "Enter the second number: ");
         char operator = getOperatorInput(scanner);
+        double num2 = getDoubleInput(scanner, "Enter the second number: ");
+        
 
         double result;
 
