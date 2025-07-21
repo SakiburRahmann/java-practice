@@ -6,11 +6,13 @@ public class Main {
 
         String name = getValidName(scanner);
         int age = getValidAge(scanner);
-        scanner.nextLine();
+        scanner.nextLine(); // consume leftover newline
         String studentId = getValidStudentId(scanner);
 
         Student student = new Student(name, age, studentId);
         System.out.println(student);
+
+        System.out.println("Total persons created: " + Person.getCount());
 
         scanner.close();
     }
@@ -35,11 +37,10 @@ public class Main {
     }
 
     static int getValidAge(Scanner scanner) {
-        int age;
         while (true) {
             System.out.print("Enter age: ");
             if (scanner.hasNextInt()) {
-                age = scanner.nextInt();
+                int age = scanner.nextInt();
                 if (age < 0 || age > 150) {
                     System.out.println("The age seems unrealistic!");
                 } else {
@@ -47,7 +48,7 @@ public class Main {
                 }
             } else {
                 System.out.println("Invalid input! Enter a numeric value.");
-                scanner.next();
+                scanner.next(); // consume invalid token
             }
         }
     }
@@ -70,5 +71,4 @@ public class Main {
             return studentId;
         }
     }
-
 }
