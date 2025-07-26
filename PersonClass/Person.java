@@ -29,6 +29,14 @@ public class Person {
         return age;
     }
 
+    public void updateInfo(String name) {
+        this.name = name;
+    }
+
+    public void updateInfo(int age) {
+        this.age = age;
+    }
+
     @Override
     public String toString() {
         return "Name: " + name + "\nAge: " + age;
