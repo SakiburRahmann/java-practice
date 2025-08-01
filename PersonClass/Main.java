@@ -4,16 +4,27 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
+        System.out.println("Demonstrating overloaded constructors in Person class:");
+        Person p1 = new Person("Alice", 28);     
+        Person p2 = new Person("Bob");           
+        Person p3 = new Person();                
 
+        System.out.println("\n--- Person Objects ---");
+        System.out.println(p1);
+        System.out.println(p2);
+        System.out.println(p3);
+
+        System.out.println("\n--- Create Student ---");
         String name = getValidName(scanner);
         int age = getValidAge(scanner);
-        scanner.nextLine();
+        scanner.nextLine(); 
         String studentId = getValidStudentId(scanner);
 
         Student student = new Student(name, age, studentId);
+        System.out.println("\nCreated Student:");
         System.out.println(student);
 
-        System.out.println("Do you want to update the name or age? (yes/no)");
+        System.out.println("\nDo you want to update the name or age? (yes/no)");
         String updateChoice = scanner.nextLine().trim().toLowerCase();
         if (updateChoice.equals("yes")) {
             updateStudentInfo(student, scanner);
@@ -21,7 +32,10 @@ public class Main {
             System.out.println("No updates made.");
         }
 
-        System.out.println("Total persons created: " + Person.getCount());
+        System.out.println("\nFinal Student Info:");
+        System.out.println(student);
+
+        System.out.println("\nTotal Person objects created: " + Person.getCount());
 
         scanner.close();
     }
@@ -33,15 +47,11 @@ public class Main {
 
             if (name.isEmpty()) {
                 System.out.println("Name cannot be empty.");
-                continue;
+            } else if (name.matches("\\d+")) {
+                System.out.println("Name cannot be numeric.");
+            } else {
+                return name;
             }
-
-            if (name.matches("\\d+")) {
-                System.out.println("Name cannot be a number!");
-                continue;
-            }
-
-            return name;
         }
     }
 
@@ -51,13 +61,13 @@ public class Main {
             if (scanner.hasNextInt()) {
                 int age = scanner.nextInt();
                 if (age < 0 || age > 150) {
-                    System.out.println("The age seems unrealistic!");
+                    System.out.println("Age must be between 0 and 150.");
                 } else {
                     return age;
                 }
             } else {
-                System.out.println("Invalid input! Enter a numeric value.");
-                scanner.next();
+                System.out.println("Invalid input. Please enter a valid number.");
+                scanner.next(); 
             }
         }
     }
@@ -69,20 +79,16 @@ public class Main {
 
             if (studentId.isEmpty()) {
                 System.out.println("Student ID cannot be empty.");
-                continue;
+            } else if (!studentId.matches("[a-zA-Z0-9]+")) {
+                System.out.println("Student ID must be alphanumeric.");
+            } else {
+                return studentId;
             }
-
-            if (!studentId.matches("[a-zA-Z0-9]+")) {
-                System.out.println("Student ID must contain only letters and numbers.");
-                continue;
-            }
-
-            return studentId;
         }
     }
 
     static void updateStudentInfo(Student student, Scanner scanner) {
-        System.out.println("What do you want to update? (name/age)");
+        System.out.println("What would you like to update? (name/age)");
         String choice = scanner.nextLine().trim().toLowerCase();
 
         if (choice.equals("name")) {
@@ -92,9 +98,7 @@ public class Main {
             int newAge = getValidAge(scanner);
             student.updateInfo(newAge);
         } else {
-            System.out.println("Invalid choice. No updates made.");
+            System.out.println("Invalid choice. No updates applied.");
         }
-
-        System.out.println("Updated Student Info: " + student);
     }
 }
