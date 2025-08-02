@@ -5,9 +5,9 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Demonstrating overloaded constructors in Person class:");
-        Person p1 = new Person("Alice", 28);     
-        Person p2 = new Person("Bob");           
-        Person p3 = new Person();                
+        Person p1 = new Person("Alice", 28);
+        Person p2 = new Person("Bob");
+        Person p3 = new Person();
 
         System.out.println("\n--- Person Objects ---");
         System.out.println(p1);
@@ -17,7 +17,7 @@ public class Main {
         System.out.println("\n--- Create Student ---");
         String name = getValidName(scanner);
         int age = getValidAge(scanner);
-        scanner.nextLine(); 
+        scanner.nextLine();
         String studentId = getValidStudentId(scanner);
 
         Student student = new Student(name, age, studentId);
@@ -36,6 +36,18 @@ public class Main {
         System.out.println(student);
 
         System.out.println("\nTotal Person objects created: " + Person.getCount());
+
+        
+        System.out.println("\n--- Demonstrating Polymorphism ---");
+        Person[] people = new Person[4];
+        people[0] = p1;
+        people[1] = p2;
+        people[2] = p3;
+        people[3] = student;
+
+        for (Person person : people) {
+            person.introduce();
+        }
 
         scanner.close();
     }
@@ -67,7 +79,7 @@ public class Main {
                 }
             } else {
                 System.out.println("Invalid input. Please enter a valid number.");
-                scanner.next(); 
+                scanner.next();
             }
         }
     }

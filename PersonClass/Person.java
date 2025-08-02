@@ -1,23 +1,20 @@
 public class Person {
     private String name;
     private int age;
-    private static int personCount = 0;  // Static field to track instances
+    private static int personCount = 0;
 
-    // Constructor 1: name and age
     public Person(String name, int age) {
         setName(name);
         setAge(age);
         personCount++;
     }
 
-    // Constructor 2: name only
     public Person(String name) {
         setName(name);
         setAge(0);
         personCount++;
     }
 
-    // Constructor 3: no parameters
     public Person() {
         setName("Unknown");
         setAge(-1);
@@ -64,4 +61,9 @@ public class Person {
     public String toString() {
         return "Name: " + name + "\nAge: " + age;
     }
+
+    public void introduce() {
+        System.out.println("Hello, I am " + getName() + " and I am " + getAge() + " years old.");
+    }
+
 }

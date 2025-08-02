@@ -18,4 +18,10 @@ public class Student extends Person {
     public String toString() {
         return super.toString() + "\nStudent ID: " + studentId;
     }
+
+    @Override
+    public void introduce() {
+        System.out.println("Hello, I am " + getName() + ", " + getAge() + " years old, and my student ID is " + studentId + ".");
+    }
+
 }
