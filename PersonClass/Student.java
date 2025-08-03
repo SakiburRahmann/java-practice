@@ -3,7 +3,7 @@ public class Student extends Person {
 
     public Student(String name, int age, String studentId) {
         super(name, age);
-        setStudentId(studentId);
+        this.studentId = studentId;
     }
 
     public void setStudentId(String studentId) {
@@ -15,13 +15,17 @@ public class Student extends Person {
     }
 
     @Override
-    public String toString() {
-        return super.toString() + "\nStudent ID: " + studentId;
+    public void introduce() {
+        System.out.println("Hello, I am " + name + ", " + age + " years old, and my student ID is " + studentId + ".");
     }
 
     @Override
-    public void introduce() {
-        System.out.println("Hello, I am " + getName() + ", " + getAge() + " years old, and my student ID is " + studentId + ".");
+    public String getRole() {
+        return "Student";
     }
 
+    @Override
+    public String toString() {
+        return super.toString() + "\nStudent ID: " + studentId;
+    }
 }

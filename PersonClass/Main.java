@@ -37,7 +37,6 @@ public class Main {
 
         System.out.println("\nTotal Person objects created: " + Person.getCount());
 
-        
         System.out.println("\n--- Demonstrating Polymorphism ---");
         Person[] people = new Person[4];
         people[0] = p1;
@@ -47,6 +46,19 @@ public class Main {
 
         for (Person person : people) {
             person.introduce();
+        }
+
+        System.out.println("\n--- Demonstrating Polymorphism ---");
+        Human[] people2 = new Human[4];
+        people2[0] = p1;
+        people2[1] = p2;
+        people2[2] = p3;
+        people2[3] = student;
+
+        for (Human person : people2) {
+            person.introduce();
+            System.out.println("Role: " + person.getRole());
+            System.out.println();
         }
 
         scanner.close();
