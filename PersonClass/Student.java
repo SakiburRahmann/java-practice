@@ -1,4 +1,4 @@
-public class Student extends Person {
+public class Student extends Person implements Identifiable {
     private String studentId;
 
     public Student(String name, int age, String studentId) {
@@ -27,5 +27,10 @@ public class Student extends Person {
     @Override
     public String toString() {
         return super.toString() + "\nStudent ID: " + studentId;
+    }
+
+    @Override
+    public String getUniqueId() {
+        return studentId;
     }
 }

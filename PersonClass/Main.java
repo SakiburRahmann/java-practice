@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -17,7 +19,7 @@ public class Main {
         System.out.println("\n--- Create Student ---");
         String name = getValidName(scanner);
         int age = getValidAge(scanner);
-        scanner.nextLine();
+        scanner.nextLine(); 
         String studentId = getValidStudentId(scanner);
 
         Student student = new Student(name, age, studentId);
@@ -37,7 +39,7 @@ public class Main {
 
         System.out.println("\nTotal Person objects created: " + Person.getCount());
 
-        System.out.println("\n--- Demonstrating Polymorphism ---");
+        System.out.println("\n--- Demonstrating Polymorphism (Person[] array) ---");
         Person[] people = new Person[4];
         people[0] = p1;
         people[1] = p2;
@@ -48,17 +50,25 @@ public class Main {
             person.introduce();
         }
 
-        System.out.println("\n--- Demonstrating Polymorphism ---");
-        Human[] people2 = new Human[4];
-        people2[0] = p1;
-        people2[1] = p2;
-        people2[2] = p3;
-        people2[3] = student;
+        System.out.println("\n--- Demonstrating Polymorphism (Human[] array) ---");
+        Human[] humans = new Human[4];
+        humans[0] = p1;
+        humans[1] = p2;
+        humans[2] = p3;
+        humans[3] = student;
 
-        for (Human person : people2) {
-            person.introduce();
-            System.out.println("Role: " + person.getRole());
+        for (Human human : humans) {
+            human.introduce();
+            System.out.println("Role: " + human.getRole());
             System.out.println();
+        }
+
+        System.out.println("\n--- Demonstrating Interface: Identifiable ---");
+        List<Identifiable> identifiables = new ArrayList<>();
+        identifiables.add(student); 
+
+        for (Identifiable identifiable : identifiables) {
+            System.out.println("Unique ID: " + identifiable.getUniqueId());
         }
 
         scanner.close();
@@ -91,7 +101,7 @@ public class Main {
                 }
             } else {
                 System.out.println("Invalid input. Please enter a valid number.");
-                scanner.next();
+                scanner.next(); 
             }
         }
     }
