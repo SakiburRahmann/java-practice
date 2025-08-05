@@ -71,6 +71,65 @@ public class Main {
             System.out.println("Unique ID: " + identifiable.getUniqueId());
         }
 
+
+        ArrayList<Person> personList = new ArrayList<>();
+        personList.add(new Person("Umar", 22));
+        personList.add(new Person("Ishaq", 21));
+        personList.add(new Person("Fatima", 20));
+
+        System.out.println("Do you want to add a new person? (yes/no)");
+        String addPersonChoice = scanner.nextLine().trim().toLowerCase();
+        if (addPersonChoice.equals("yes")) {
+            String newName = getValidName(scanner);
+            int newAge = getValidAge(scanner);
+            scanner.nextLine();
+            personList.add(new Person(newName, newAge));
+        }
+
+        System.out.println("Do you want to remove a person? (yes/no)");
+        String removePersonChoice = scanner.nextLine().trim().toLowerCase();
+        if (removePersonChoice.equals("yes")) {
+            System.out.println("Enter the index of the person to remove (0 to " + (personList.size() - 1) + "):");
+            if (scanner.hasNextInt()) {
+                int index = scanner.nextInt();
+                scanner.nextLine();
+                if (index >= 0 && index < personList.size()) {
+                    personList.remove(index);
+                    System.out.println("Person removed successfully.");
+                } else {
+                    System.out.println("Invalid index. No person removed.");
+                }
+            } else {
+                System.out.println("Invalid input. No person removed.");
+                scanner.next(); 
+            }
+        }
+
+        System.out.println("Do you want to search for a person by name? (yes/no)");
+        String searchPersonChoice = scanner.nextLine().trim().toLowerCase();
+        if (searchPersonChoice.equals("yes")) {
+            System.out.print("Enter the name to search: ");
+            String searchName = scanner.nextLine().trim();
+            boolean found = false;
+
+            for (Person person : personList) {
+                if (person.getName().equalsIgnoreCase(searchName)) {
+                    System.out.println("Found: " + person);
+                    found = true;
+                    break;
+                }
+            }
+
+            if (!found) {
+                System.out.println("No person found with the name: " + searchName);
+            }
+        }
+
+        System.out.println("\nFinal Person List:");
+        for (Person person : personList) {
+            System.out.println(person);
+        }
+
         scanner.close();
     }
 
